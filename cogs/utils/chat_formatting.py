@@ -1,3 +1,16 @@
+import discord
+import datetime
+
+def command_error(operation, description):
+    embed = discord.Embed(title="Error: " + operation, description=description, color=discord.Color.red())
+    embed.timestamp = datetime.datetime.now()
+    return embed
+
+def command_success(operation, description):
+    embed = discord.Embed(title="Success!: " + operation, description=description, color=discord.Color.green())
+    embed.timestamp = datetime.datetime.now()
+    return embed
+
 def error(text):
     return "\N{NO ENTRY SIGN} {}".format(text)
 

@@ -1,3 +1,9 @@
 [discord]
 TOKEN=
 PREFIX=!
+[MySQL]
+username=
+password=
+host=
+port=
+database=

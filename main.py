@@ -9,6 +9,7 @@ from discord.ext import commands
 from loguru import logger
 
 from cogs.utils.checks import is_bot_owner_check
+from cogs.utils.Database import MySQL
 
 
 #initiate logger test
@@ -82,10 +83,13 @@ async def unload(ctx, extension):
     except Exception as error:
         logger.exception(f"Extension {extension} could not be unloaded. [{error}]")
 
-
+DB_USER = auth.get("MySQL", "username")
+DB_PASS = auth.get("MySQL", "password")
+DB_HOST = auth.get("MySQL", "host")
+DB_DATABASE = auth.get("MySQL", "database")
 if __name__ == "__main__":
-    bot.remove_command('help')
     extensions = load_cogs('cogs')
+    MySQL.loadDB(DB_USER, DB_PASS, DB_HOST, DB_DATABASE)
     for extension in extensions:
         try:
             bot.load_extension('cogs.'+extension)
