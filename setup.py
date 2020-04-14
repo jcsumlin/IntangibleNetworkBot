@@ -22,6 +22,7 @@ def main():
 
     Models.DiscordGuild.__table__.create(engine, checkfirst=True)
     Models.WordBlackList.__table__.create(engine, checkfirst=True)
+    Models.WordBanInfractions.__table__.create(engine, checkfirst=True)
     logger.success('Created tables')
 
 

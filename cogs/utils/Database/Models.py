@@ -1,6 +1,7 @@
-from sqlalchemy import Column, String, Sequence, Integer, ForeignKey, BIGINT
+from sqlalchemy import Column, String, Sequence, Integer, ForeignKey, BIGINT, TEXT, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+import datetime
 
 Base = declarative_base()
 
@@ -16,3 +17,11 @@ class WordBlackList(Base):
     id = Column(Integer, primary_key=True)
     guild_id = Column(BIGINT)
     banned_word = Column(String(30))
+
+class WordBanInfractions(Base):
+    __tablename__ = 'word_ban_infractions'
+    id = Column(Integer, primary_key=True)
+    date_time = Column(DateTime, default=datetime.datetime.utcnow)
+    guild_id = Column(BIGINT)
+    user_id = Column(BIGINT)
+    message = Column(TEXT)
